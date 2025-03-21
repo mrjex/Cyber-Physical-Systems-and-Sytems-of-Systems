@@ -1,0 +1,32 @@
+version: '2'
+services:
+  video-h264-decoder:
+    image: h264decoder:v0.0.5
+    restart: on-failure
+    network_mode: "host"
+    ipc: "host"
+    volumes:
+      - /tmp:/tmp
+    environment:
+      - DISPLAY=${DISPLAY}
+    command: "--cid=253 --name=img"
+
+  group14:
+    image: registry.git.chalmers.se/courses/dit638/students/2024-group-14:${RELEASE_VERSION}
+    network_mode: "host"
+    ipc: "host"
+    volumes:
+      - /tmp:/tmp
+    environment:
+      - DISPLAY=${DISPLAY}
+    command: "--cid=253 --name=img --width=640 --height=480"
+  
+  opendlv-vehicle-view:
+    image: chrberger/opendlv-vehicle-view:v0.0.64
+    restart: on-failure
+    network_mode: "host"
+    volumes:
+      - /$PWD:/opt/vehicle-view/recordings
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "8081:8081"

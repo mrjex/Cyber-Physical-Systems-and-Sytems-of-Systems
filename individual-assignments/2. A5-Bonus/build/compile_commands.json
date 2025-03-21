@@ -1,0 +1,22 @@
+[
+{
+  "directory": "/media/sf_A5-Bonus/build",
+  "command": "/usr/bin/g++   -g -std=gnu++11 -o CMakeFiles/helloworld.dir/helloworld.cpp.o -c /media/sf_A5-Bonus/helloworld.cpp",
+  "file": "/media/sf_A5-Bonus/helloworld.cpp"
+},
+{
+  "directory": "/media/sf_A5-Bonus/build",
+  "command": "/usr/bin/g++   -g -std=gnu++11 -o CMakeFiles/helloworld.dir/PrimeChecker.cpp.o -c /media/sf_A5-Bonus/PrimeChecker.cpp",
+  "file": "/media/sf_A5-Bonus/PrimeChecker.cpp"
+},
+{
+  "directory": "/media/sf_A5-Bonus/build",
+  "command": "/usr/bin/g++   -g -std=gnu++11 -o CMakeFiles/helloworld-Runner.dir/TestPrimeChecker.cpp.o -c /media/sf_A5-Bonus/TestPrimeChecker.cpp",
+  "file": "/media/sf_A5-Bonus/TestPrimeChecker.cpp"
+},
+{
+  "directory": "/media/sf_A5-Bonus/build",
+  "command": "/usr/bin/g++   -g -std=gnu++11 -o CMakeFiles/helloworld-Runner.dir/PrimeChecker.cpp.o -c /media/sf_A5-Bonus/PrimeChecker.cpp",
+  "file": "/media/sf_A5-Bonus/PrimeChecker.cpp"
+}
+]

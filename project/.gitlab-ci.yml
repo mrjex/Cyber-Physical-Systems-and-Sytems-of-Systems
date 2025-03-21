@@ -1,0 +1,125 @@
+image: ubuntu:latest
+
+# Details about how to connect to the Docker service to run this build.
+variables:
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_TLS_CERTDIR: ""
+  SUPPORTED_ARCHITECTURES: linux/amd64,linux/arm
+
+services:
+  - name: docker:24.0.9-dind
+    command: ["--experimental"]
+
+stages:
+  - build
+  - plot
+  - deploy
+
+# Display information before we start the build.
+# default:
+#  before_script:
+#  - docker info
+#  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+
+# If error, try adding before_script with ubuntu CLI installations
+# This section describes what shall be done to build and test the project.
+build-and-test:
+  tags:
+    - docker-build
+  stage: build
+  before_script:
+    - apt-get update
+    - apt-get install -y apt-transport-https ca-certificates curl gnupg lsb-release
+    - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    - echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+    - apt-get update
+    - apt-get install -y docker-ce docker-ce-cli containerd.io gnuplot
+  script:
+    # - docker build -f Dockerfile .
+    - docker build -t my-opencv-example:latest -f Dockerfile .
+    
+  except:
+    - tags
+
+# This section generates a code coverage report based on unit tests
+coverage:
+  inherit:
+    default: false
+  tags:
+    - docker
+  image: alpine:latest
+  stage: build
+  script:
+    - apk add cmake make g++ gcovr opencv-dev
+    - mkdir build
+    - cd build
+    - cmake ..
+    - make
+    - make test
+    - cd ..
+    - mkdir public
+    - gcovr --xml-pretty --exclude-unreachable-branches --print-summary --html-details public/report.html -o public/coverage.xml --root ${CI_PROJECT_DIR}
+    - gcovr -e src/catch.hpp --exclude-unreachable-branches --root ${CI_PROJECT_DIR}
+  artifacts:
+    name: ${CI_JOB_NAME}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}
+    paths:
+      - public
+    expire_in: 30 days
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: public/coverage.xml  
+  coverage: /^TOTAL.*\s+(\d+\%)$/
+  
+
+plotgraph:
+  tags:
+    - docker-build
+  image: ubuntu:latest
+  stage: plot
+  
+  before_script:
+    - chmod +x ./scripts/docker-install.sh; ./scripts/docker-install.sh
+    - chmod +x ./scripts/install-gnuplot.sh; ./scripts/install-gnuplot.sh
+    - chmod +x ./scripts/csv-parser.sh;
+
+  script:
+
+    - apt-get update -y && apt-get upgrade -y
+    - mkdir graphs-output
+    - cd graphs-output
+    - chmod +x ../scripts/a21.sh; ../scripts/a21.sh
+    
+  artifacts:
+    paths:
+      - graphs-output
+
+
+# This section describes what shall be done to deploy artefacts from the project.
+release:
+  tags:
+    - docker-build
+  stage: deploy
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)\.(?P<patch>0|[1-9]\d*)(?:-(?P<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?P<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/
+      when: always
+
+  script:
+    - docker run --privileged --rm tonistiigi/binfmt --install all
+    #folder navigation
+    - mkdir -p ~/.docker/cli-plugins
+    - cd ~/.docker/cli-plugins/
+
+    #install buildx
+    - wget https://github.com/docker/buildx/releases/download/v0.7.1/buildx-v0.7.1.linux-amd64
+
+    #grant permissions for modifications
+    - mv buildx-v0.7.1.linux-amd64 docker-buildx
+    - chmod 755 docker-buildx
+    
+    - apk add tree
+    - cd ../../../
+    - cd builds/courses/dit638/students/2024-group-14
+
+    - docker buildx create --name mybuilder --driver=docker-container default
+    - DOCKER_CLI_EXPERIMENTAL=enabled docker buildx build --builder=mybuilder --platform=$SUPPORTED_ARCHITECTURES --progress=plain -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_TAG" --push .

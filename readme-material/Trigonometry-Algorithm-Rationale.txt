@@ -1,0 +1,87 @@
+aR: Known
+bR: Known
+
+dR = aR^2 + bR^2 (Pythagoras theorem)
+dL = aL^2 + bL^2 (Pythagoras theorem)
+
+vR = cos(aR/dR)
+vL = cos(aL/dL)
+
+G = 180 - (vL + vR)
+
+groundSteering = map(G, 0.3, -0.3)
+
+
+
+x = originalOutput
+
+straightLineFactor = 90
+
+x / 90 = referenceFactor
+
+referenceFactor * x = groundSteering
+
+return groundSteering
+
+
+
+*** STRAIGHT LINE EDGE CASE ***
+vL = vR = 45
+dL = dR
+G = 180 - (45 + 45) = 90
+
+
+IDEA FORMULA:
+diff = vL - vR
+map(diff, 0.3, -0.3)
+
+
+90   --> 0       (Straight line)
+180  --> -0.3    (Right turn)
+0    --> 0.3     (Left turn)
+
+45   --> 0.15
+135  --> -0.15
+
+
+
+
+
+vL = 30
+vR = 0
+
+G = 180 - (30 + 0) = 150
+
+
+
+
+
+
+
+
+
+
+
+G = 180 - (vL + vR)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

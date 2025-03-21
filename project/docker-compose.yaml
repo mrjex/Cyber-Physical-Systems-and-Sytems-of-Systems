@@ -1,0 +1,58 @@
+# Inspirational Resource: https://github.com/compose-spec/compose-spec/tree/master
+
+
+# Commands to break down into yaml format:
+
+# docker build https://github.com/chalmers-revere/opendlv-video-h264-decoder.git#v0.0.5 -f Dockerfile -t h264decoder:v0.0.5
+
+# xhost + sudo docker run --rm -ti --net=host --ipc=host -e DISPLAY=$DISPLAY -v /tmp:/tmp h264decoder:v0.0.5 --cid=253 --name=img
+
+
+# sudo docker run --rm -ti --net=host --ipc=host -e DISPLAY=$DISPLAY -v /tmp:/tmp my-opencv-example:latest --cid=253 --name=img --width=640 --height=480 --verbose
+
+
+# IDEA: Have a "build:" attribute with h264 and opendl-view with the correspodning commands and run
+# docker-compose build h264-decoder
+# docker-compose build opendlv-vehicle-view
+
+
+version: '2'
+services:
+  video-h264-decoder:
+    build:
+      context: https://github.com/chalmers-revere/opendlv-video-h264-replay.git#v0.0.4
+      dockerfile: Dockerfile
+    restart: on-failure
+    network_mode: "host"
+    ipc: "host"
+    volumes:
+      - /tmp:/tmp
+      - ./Videos:/videos
+    environment:
+      - DISPLAY=${DISPLAY}
+    command: "--cid=253 --name=img /videos/video${VID_NR}.rec"
+    healthcheck:
+      test: ls || exit 1
+      interval: 5s
+      start_period: 5s
+
+  group14:
+    depends_on:
+      video-h264-decoder:
+          condition: service_healthy 
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # restart: always
+    network_mode: "host"
+    ipc: "host"
+    volumes:
+      - /tmp:/tmp
+      - ./Generated_CSV:/Generated_CSV
+    environment:
+      - DISPLAY=${DISPLAY}
+    command: "--cid=253 --name=img --width=640 --height=480 ${VID_NR}"
+
+# networks:
+#     group14:
+#       name: group14

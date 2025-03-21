@@ -1,0 +1,21 @@
+Start testing: Apr 29 12:16 CEST
+----------------------------------------------------------
+1/1 Testing: helloworld-Runner
+1/1 Test: helloworld-Runner
+Command: "/media/sf_A5-Latest/build/helloworld-Runner"
+Directory: /media/sf_A5-Latest/build
+"helloworld-Runner" start time: Apr 29 12:16 CEST
+Output:
+----------------------------------------------------------
+===============================================================================
+All tests passed (1 assertion in 1 test case)
+
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"helloworld-Runner" end time: Apr 29 12:16 CEST
+"helloworld-Runner" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Apr 29 12:16 CEST
