@@ -2,3 +2,5 @@ individual-assignments/1.[[:space:]]A5/joelmat-example.tar.gz filter=lfs diff=lf
 individual-assignments/4.[[:space:]]A13[[:space:]]-[[:space:]]Access[[:space:]]data[[:space:]]from[[:space:]]the[[:space:]]miniature[[:space:]]car/submission-showcase.mp4 filter=lfs diff=lfs merge=lfs -text
 individual-assignments/5.[[:space:]]A14[[:space:]]-[[:space:]]Object[[:space:]]detection[[:space:]]with[[:space:]]HSV/submission-showcase.mp4 filter=lfs diff=lfs merge=lfs -text
 presentations/MS3[[:space:]]-[[:space:]]Final[[:space:]]Presentation.mp4 filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+*.tar.gz filter=lfs diff=lfs merge=lfs -text
