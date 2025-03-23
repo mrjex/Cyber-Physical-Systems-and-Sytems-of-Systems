@@ -1,15 +1,15 @@
 # Cyber Physical Systems and Sytems of Systems
 
-In 2024, me and 3 other students were actively working this project from March to May. Due to our ambitious, we ventured on another project at the same time: [Project Branno](https://gitlab.com/jex-projects/mrjex/-/tree/main/projects/2.%20spare-time/1.%20Project%20Branno?ref_type=heads). What's distinguishing for this project is its baseline similarity with the knowledge covered in this course. As we as students were given strict requirements and constraints in the development of this project, we couldn't include the ambitious extra features that we desired to add to the project. Thus, we ended up multitasking and developing a side project that's partially based on what you'll see in this very repository.
+In 2024, me and 3 other students were actively working this project from March to May. Due to our ambitious, we ventured on another project at the same time: [Project Branno](https://github.com/mrjex/Project-Branno). What's distinguishing for this project is its baseline similarity with the knowledge covered in this course. As we as students were given strict requirements and constraints in the development of this project, we couldn't include the ambitious extra features that we desired to add to the project. Thus, we ended up multitasking and developing a side project that's partially based on what you'll see in this very repository.
 
 
 This course had a unique structure compared to all of my previous courses. Instead of having 3 major assignments, we had a total of 27 such that the required time for an assignment is significantly less. Moreover, the diffuculty of each assignment was fluctuating in the sense that the next task is predicated on the knowledge you were expected to derive from the previous task. For the sake of presenting me and my group's work in as simple a way as possible, I merged several assignments into one to reduce the quantity of folders. These assignments were categorized by 'Individual' and 'Group', such that the individual ones only applied to me, and the other ones involved the entire group. The vast majority of these were group assignments and the result of these can be found in the `/project` directory. However, I've put my individual tasks in the `/individual-assignments` folder. My previous *C* and *C++* experiences can be seen in:
 
-- [Problem Solving, C-Programming](https://gitlab.com/jex-projects/mrjex/-/tree/main/problem-solving/3.%20C-Programming?ref_type=heads)
+- [Problem Solving, C-Programming](https://github.com/mrjex/C-Programming)
 
-- [Systems Development](https://gitlab.com/jex-projects/mrjex/-/tree/main/projects/1.%20courses/year-1/7.%20Systems%20Development/WioPlay/seeed-wio-terminal/WioPlay?ref_type=heads)
+- [WioPlay](https://github.com/Indomet/WioPlay)
 
-- [Development of Embedded & Real-Time Systems](https://gitlab.com/jex-projects/mrjex/-/tree/main/projects/1.%20courses/year-2/5.%20Development%20of%20Embedded%20&%20Real-Time%20Systems?ref_type=heads)
+- [Development of Embedded & Real-Time Systems](https://github.com/mrjex/Embedded-and-Real-Time-Systems)
 
 
 ## Get Started
@@ -96,7 +96,7 @@ Continious Integration or Continious Deployment is a vital aspect of software en
 - LOWER BOUND: 0.23 - (0.23 * 0.25) = 0.1725
 
 
-![Custom-Tests](readme-material/Custom-Tests.mp4)
+[![Custom-Tests](https://img.youtube.com/vi/2nMf8ZPoyLo/maxresdefault.jpg)](https://www.youtube.com/watch?v=2nMf8ZPoyLo)
 
 
 
@@ -110,10 +110,11 @@ Continious Integration or Continious Deployment is a vital aspect of software en
 - In later stages of the project, we retrieved the other values generated from the .rec files besides the groundSteering, such as A, B and C. These were then stored as CSV files and plotted as separate PNG files. In the long run, this manual process was time consuming and tedious. We realized that the time we used for this repetitive work could be used for more creative endeavors, so we automated this with a few Bash scripts:
 
 
-![Automated-Graphs](readme-material/dev-analysis-generate-png-plots.mp4)
+[![Dev-Analysis-Generate-Plots](https://img.youtube.com/vi/WRlhP645xCw/maxresdefault.jpg)](https://www.youtube.com/watch?v=WRlhP645xCw)
 
 
-![Automated-Graphs](readme-material/Automated-Graph-Shell-Presentation.mp4)
+[![Graph-Shell-Presentation](https://img.youtube.com/vi/B3PC6q6PbXQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=B3PC6q6PbXQ)
+
 
 
 ### Cone Detection
@@ -124,7 +125,10 @@ Before we could start coding the algorithm, we were obligated to solve this part
 
 ![Yolov8-Annotate-Images](readme-material/yolov8-train.png)
 
-![Yolov8-Detection](readme-material/yolov8-trigonometry-videos/yolov8-detection.mp4)
+
+[![Yolov8-Detection](https://img.youtube.com/vi/z00Hh8TTxKY/maxresdefault.jpg)](https://www.youtube.com/watch?v=z00Hh8TTxKY)
+
+
 
 Eventually, we got curious and put the model's consistency to the test by annotating different colors of the cones. As we only were given 5 .rec files with consistent colors by our stakeholder, we changed the hue of the videos first:
 
@@ -135,7 +139,7 @@ Eventually, we got curious and put the model's consistency to the test by annota
 
 2. Run prediction:
 
-![Hue-Prediction](readme-material/yolov8-trigonometry-videos/hue-video.mp4)
+[![Hue-Prediction](https://img.youtube.com/vi/5p3Kr_2tf9E/maxresdefault.jpg)](https://www.youtube.com/watch?v=5p3Kr_2tf9E)
 
 
 
@@ -167,40 +171,41 @@ Initial intuition:
 
 The group’s initial algorithmic attempt was to use the positions of the cones to determine the diagonal and horizontal distance from the car’s center. In turn, we could draw rectangles and resolve the associated angles to ultimately decide how close a cone is, and hence, how intense the car had to steer. This would be done by using Pythagoras Theorem to calculate the length of the sides combined with tan inverse to resolve the angles. In the picture below, the car is driving in an intense curve, resulting in the blue cones being unnoticed:
 
-![Pic-1](readme-material/trigonometry/1. pic.png)
+![Pic-1](readme-material/trigonometry/1.%20pic.png)
 
 
 In this case, the magnitude of the angle separating the yellow cone and the center of the car would define the degree to which the car would turn in the opposite direction. If the angle is bigger, it implies that the cone is further away, making the calculated ground steering value less significant. Conversely, a close cone would yield a small angle, but generate a steering value that reflects a strong curve. This is implemented by working with the angles within a range from 0 to 180, where 0 is equivalent to a sharp 90-degree turn to the left, 180 is a 90-degree turn to the right, and 90 is the central angle, indicating that the car is driving in a straight line4. In the implementation, we would either subtract or add the calculated angle from the central angle, depending on whether a left or right cone was detected However, in case of slighter turns where cones at both sides are present, we needed to take into account for the degree of each angle and establish a mathematical algebraic relationship that gives precedence to the closest cone, yet still lets the cone in the back have an impact on the outputted steering angle. We expressed this relationship by taking the average of the absolute values of each angle from the central angle 90:
 
-![Pic-2](readme-material/trigonometry/2. pic.png)
+![Pic-2](readme-material/trigonometry/2.%20pic.png)
 
 Once we reached the disappointing result of only achieving an accuracy of 12%, the graph was plotted such that the blue line is our output compared to the actual ground steering:
 
-![Pic-3](readme-material/trigonometry/3. pic.png)
+![Pic-3](readme-material/trigonometry/3.%20pic.png)
 
 
 When weobserved the blue line, it appeared as if it turned more on the easier curves but failed to match the magnitude of the expected intensity in the harder curves. Due to this, we developed the hypothesis that the algorithm worked as intended, in the sense that if it would be applied on the car it would stay within the road and avoid crashing. We reasoned that if the sum of the generated ground-steering values would be equal, meaning that both algorithms make the car turn the same number of degrees in the same video, then our algorithm must work as intended, despite the disappointing accuracy:
 
-![Pic-4](readme-material/trigonometry/4. pic.png)
+![Pic-4](readme-material/trigonometry/4.%20pic.png)
 
 
 Keep in mind that a human drives the car in the video. This would undoubtedly entail a higher inaccuracy, as opposed to running a simulation with the car on the implemented algorithm. For instance, if the human drives too deep in a curve, our algorithm encounters a case it never should encounter (because it would turn significantly earlier) with respect to the positions and angles to the detected cones. Below follows a visualization of how our algorithm differs from the expected value, where the red line represents the calculated value:
 
-![Pic-5](readme-material/trigonometry/5. pic.png)
+![Pic-5](readme-material/trigonometry/5.%20pic.png)
 
 
 The question that remains now is: Now when we have mathematical proof that the algorithm is capable of steering the car on the cone road without crashing, why did it only reach an accuracy of 12%? First of all, as mentioned above the fact that the car is running on a human-driven video exposes it in scenarios it never would reach if our algorithm was applied, resulting in erroneous cone-angles (input) and thus inaccurate ground steering (output). The second contributing factor is concerned with the requirement of staying within 25% of the expected output. To put this in perspective, let's observe the numerical constraints in two concrete cases:
 
-![Pic-6](readme-material/trigonometry/6. pic.png)
+![Pic-6](readme-material/trigonometry/6.%20pic.png)
 
 
 The two cases above convey that the difference is significant yet not too distant for it to be dismissed when the algorithm operates with erroneous input (a fixed video without a real-time simulation of the applied algorithm’s performance). In other words, when the two factors are coupled together, the 25% requirement doesn’t make up for the fact that the input video is pre-recorded. Ultimately, we concluded that applying this trigonometric algorithm to the car would correctly drive it as in avoiding crashing into cones. We also acknowledged that this approach wouldn’t yield a satisfactory result with respect to the set-out requirements of this course as we moved on to the next algorithmic attempt, linear regression.
 
 
+[![Ground-Steering-UI-Feedback](https://img.youtube.com/vi/ZwcRwJHVj1w/maxresdefault.jpg)](https://www.youtube.com/watch?v=ZwcRwJHVj1w)
 
-![Car-Video-Test](readme-material/Video-Ground-Steering-UI-Feedback.mp4)
 
-![Car-Lines-Test](readme-material/yolov8-trigonometry-videos/Car-Lines.mp4)
+[![Car-Lines](https://img.youtube.com/vi/Q6-Qr963974/maxresdefault.jpg)](https://www.youtube.com/watch?v=Q6-Qr963974)
+
 
 
 #### Linear Regression
