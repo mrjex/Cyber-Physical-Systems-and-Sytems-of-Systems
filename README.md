@@ -15,6 +15,9 @@
   - [📑 Table of Contents](#-table-of-contents)
   - [🎯 Overview](#-overview)
   - [🚀 Getting Started](#-getting-started)
+    - [Required Tools](#required-tools)
+    - [Clone And Build](#clone-and-build)
+    - [Run containers](#run-containers)
   - [🔧 Modifying Code](#-modifying-code)
     - [Environment Requirements](#environment-requirements)
     - [Development Tools](#development-tools)
@@ -43,6 +46,31 @@ Unlike traditional course structures, this project consisted of 27 smaller assig
 
 
 ## 🚀 Getting Started
+
+
+### Required Tools
+These are the tools that are required to build the project, ensure that they are present on your system by running the following commands and getting a valid output.
+```
+g++ --version
+make --version
+cmake --version
+git --version
+```
+
+### Clone And Build
+These are the steps to build the project
+
+```
+git clone https://github.com/mrjex/Cyber-Physical-Systems-and-Sytems-of-Systems.git
+mkdir build (inside the cloned directory)
+cd build
+cmake ..
+make
+```
+
+
+### Run containers
+
 
 1. **Run frontend docker container**
    ```bash
