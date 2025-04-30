@@ -1,12 +1,14 @@
 # 🚗 Cyber Physical Systems and Systems of Systems
 
-> Advanced autonomous driving system using computer vision and real-time processing
+> Advanced autonomous driving system using computer vision and real-time processing by Joel Mattsson, Mohamad Khalil, Joshua Falck and Joey Karlsson
+
 
 [![C++](https://img.shields.io/badge/C++-17-blue)](https://en.cppreference.com/w/)
 [![OpenCV](https://img.shields.io/badge/OpenCV-4.5-green)](https://opencv.org/)
 [![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED)](https://www.docker.com/)
 [![YOLOv8](https://img.shields.io/badge/YOLOv8-AI-yellow)](https://github.com/ultralytics/ultralytics)
 [![CI/CD](https://img.shields.io/badge/DevOps-Automated-orange)](https://github.com/mrjex/Cyber-Physical-Systems-and-Sytems-of-Systems)
+
 
 ## 📑 Table of Contents
 - [🚗 Cyber Physical Systems and Systems of Systems](#-cyber-physical-systems-and-systems-of-systems)
@@ -27,7 +29,7 @@
   - [🧠 Algorithm Development](#-algorithm-development)
     - [Trigonometry Approach](#trigonometry-approach)
     - [Linear Regression Approach](#linear-regression-approach)
-  - [🔗 Related Projects](#-related-projects)
+
 
 ## 🎯 Overview
 
@@ -36,8 +38,9 @@ From March to May 2024, our team of four students developed this autonomous driv
 Due to course constraints limiting certain ambitious features, we simultaneously developed [Project Branno](https://github.com/mrjex/Project-Branno), which extends the concepts explored here.
 
 Unlike traditional course structures, this project consisted of 27 smaller assignments with increasing complexity, building upon knowledge from previous tasks. For simplicity, I've merged related assignments into logical groups in this repository:
-- `/project`: Group assignments (majority of the work)
+- `root directory`: Group project
 - `/individual-assignments`: My personal contributions
+
 
 ## 🚀 Getting Started
 
@@ -200,12 +203,6 @@ Performance improvements:
 ![Linear-Regression](readme-material/Linear-Regression-Gif.gif)
 *Linear regression algorithm visualization*
 
-## 🔗 Related Projects
-
-- [Project Branno](https://github.com/mrjex/Project-Branno): *Extended implementation with additional features*
-- [C-Programming](https://github.com/mrjex/C-Programming): *Foundational programming experience*
-- [Embedded & Real-Time Systems](https://github.com/mrjex/Embedded-and-Real-Time-Systems): *Related embedded systems work*
-- [WioPlay](https://github.com/Indomet/WioPlay): *Earlier hardware project*
 
 ---
 

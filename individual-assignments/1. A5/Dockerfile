@@ -1,7 +1,6 @@
 ##################################################
 # Section 1: Build the application
 FROM ubuntu:22.04 as builder
-MAINTAINER Christian Berger christian.berger@gu.se
 
 RUN apt-get update -y && \
     apt-get upgrade -y && \
@@ -23,7 +22,6 @@ RUN cd /opt/sources && \
 ##################################################
 # Section 2: Bundle the application.
 FROM ubuntu:22.04
-MAINTAINER Christian Berger christian.berger@gu.se
 
 RUN apt-get update -y && \
     apt-get upgrade -y && \

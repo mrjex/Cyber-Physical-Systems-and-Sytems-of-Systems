@@ -1,14 +1,36 @@
 # Assignment 14 - Object detection with HSV
 
+## OpenDLV-Vehicle-View
+
+```
+sudo docker run --rm -i --init --net=host --name=opendlv-vehicle-view -v $PWD:/opt/vehicle-view/recordings -v /var/run/docker.sock:/var/run/docker.sock -p 8081:8081 chrberger/opendlv-vehicle-view:v0.0.64
+```
 
 
-- Video inspector repository: https://github.com/chalmers-revere/opendlv-video-hsv-inspector
+## H264 Microservice
+
+```
+xhost +
+
+sudo docker run --rm -ti --net=host --ipc=host -e DISPLAY=$DISPLAY -v /tmp:/tmp h264decoder:v0.0.5 --cid=253 --name=img
+```
 
 
+## OpenCV Microservice
 
-- Computer vision & Object detection
+```
+sudo docker run --rm -ti --net=host --ipc=host -e DISPLAY=$DISPLAY -v /tmp:/tmp my-opencv-example:latest --cid=253 --name=img --width=640 --height=480 --verbose
+```
 
-- HSV: Hue Saturation Value
+To test the new code, rebuild the docker image:
+
+```
+sudo docker build -f Dockerfile -t my-opencv-example .
+```
 
 
-- The microservice shows two new windows: one is showing the frame as replayed from the recording and another window that shows the black/white results from your interactive HSV filter.
+# HSV Color Space Microservice
+
+```
+sudo docker run --rm -ti --init --ipc=host -v /tmp:/tmp -e DISPLAY=$DISPLAY hsv:latest --name=img --width=640 --height=480
+```
