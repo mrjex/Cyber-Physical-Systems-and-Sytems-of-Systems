@@ -20,7 +20,3 @@ build
 .history
 .ionide
 .vscode/settings.json
-
-
-*.mp4
-*.tar.gz
