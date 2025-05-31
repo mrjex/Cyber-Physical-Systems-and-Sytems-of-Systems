@@ -10,31 +10,31 @@
 [![CI/CD](https://img.shields.io/badge/DevOps-Automated-orange)](https://github.com/mrjex/Cyber-Physical-Systems-and-Sytems-of-Systems)
 
 
-## 📑 Table of Contents
+## Table of Contents
 - [🚗 Cyber Physical Systems and Systems of Systems](#-cyber-physical-systems-and-systems-of-systems)
-  - [📑 Table of Contents](#-table-of-contents)
-  - [🎯 Overview](#-overview)
-  - [🚀 Getting Started](#-getting-started)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Getting Started](#getting-started)
     - [Required Tools](#required-tools)
     - [Clone And Build](#clone-and-build)
     - [Run containers](#run-containers)
   - [🔧 Modifying Code](#-modifying-code)
     - [Environment Requirements](#environment-requirements)
     - [Development Tools](#development-tools)
-  - [🔄 CI/CD Pipeline](#-cicd-pipeline)
-  - [📊 Accuracy Testing](#-accuracy-testing)
+  - [CI/CD Pipeline](#cicd-pipeline)
+  - [Accuracy Testing](#accuracy-testing)
     - [Testing Methodology](#testing-methodology)
     - [Visualization Tools](#visualization-tools)
     - [Automated Analysis](#automated-analysis)
-  - [🔍 Cone Detection](#-cone-detection)
+  - [Cone Detection](#cone-detection)
     - [YOLOv8 Machine Learning](#yolov8-machine-learning)
     - [HSV Color Filtering](#hsv-color-filtering)
-  - [🧠 Algorithm Development](#-algorithm-development)
+  - [Algorithm Development](#algorithm-development)
     - [Trigonometry Approach](#trigonometry-approach)
     - [Linear Regression Approach](#linear-regression-approach)
 
 
-## 🎯 Overview
+## Overview
 
 From March to May 2024, our team of four students developed this autonomous driving system as part of our coursework. The project implements computer vision techniques for cone detection and steering algorithms for autonomous navigation.
 
@@ -45,7 +45,7 @@ Unlike traditional course structures, this project consisted of 27 smaller assig
 - `/individual-assignments`: My personal contributions
 
 
-## 🚀 Getting Started
+## Getting Started
 
 
 ### Required Tools
@@ -118,7 +118,7 @@ make
 
 ![Multi-architecture](readme-material/A19-Submission-Picture.png)
 
-## 🔄 CI/CD Pipeline
+## CI/CD Pipeline
 
 Our 3-stage DevOps pipeline automates testing and visualization of algorithm performance:
 
@@ -130,7 +130,7 @@ Benefits:
 - Performance visualization across all test videos
 - Support for multiple architectures
 
-## 📊 Accuracy Testing
+## Accuracy Testing
 
 ### Testing Methodology
 - Performance measured across 5 test videos (see `project/Videos`)
@@ -160,7 +160,7 @@ We developed shell scripts to automate the testing process:
 [![Graph-Shell-Presentation](https://img.youtube.com/vi/B3PC6q6PbXQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=B3PC6q6PbXQ)
 *Video: Shell-based graph generation*
 
-## 🔍 Cone Detection
+## Cone Detection
 
 Before implementing steering algorithms, we needed reliable cone detection. We explored two approaches:
 
@@ -185,7 +185,7 @@ Implementation challenges:
 - YOLOv8 required additional integration work for real-time processing
 - HSV approach offered simpler integration with existing C++ codebase
 
-## 🧠 Algorithm Development
+## Algorithm Development
 
 ### Trigonometry Approach
 
