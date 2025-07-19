@@ -1,5 +1,0 @@
-/media/sf_A5-Latest/build/CMakeFiles/helloworld.dir
-/media/sf_A5-Latest/build/CMakeFiles/helloworld-Runner.dir
-/media/sf_A5-Latest/build/CMakeFiles/test.dir
-/media/sf_A5-Latest/build/CMakeFiles/edit_cache.dir
-/media/sf_A5-Latest/build/CMakeFiles/rebuild_cache.dir

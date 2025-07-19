@@ -1,9 +1,0 @@
-# My .dockerignore file
-.git
-LICENSE
-VERSION
-README.md
-Changelog.md
-Makefile
-dist/**
-node_modules

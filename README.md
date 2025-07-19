@@ -1,6 +1,6 @@
-# 🚗 Cyber Physical Systems and Systems of Systems
+# Cyber Physical Systems and Systems of Systems
 
-> Advanced autonomous driving system using computer vision and real-time processing by Joel Mattsson, Mohamad Khalil, Joshua Falck and Joey Karlsson
+> Autonomous driving system using computer vision and real-time processing by Joel Mattsson, Mohamad Khalil, Joshua Falck and Joey Karlsson
 
 
 [![C++](https://img.shields.io/badge/C++-17-blue)](https://en.cppreference.com/w/)
@@ -11,14 +11,14 @@
 
 
 ## Table of Contents
-- [🚗 Cyber Physical Systems and Systems of Systems](#-cyber-physical-systems-and-systems-of-systems)
+- [Cyber Physical Systems and Systems of Systems](#cyber-physical-systems-and-systems-of-systems)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [Getting Started](#getting-started)
     - [Required Tools](#required-tools)
     - [Clone And Build](#clone-and-build)
     - [Run containers](#run-containers)
-  - [🔧 Modifying Code](#-modifying-code)
+  - [Modifying Code](#modifying-code)
     - [Environment Requirements](#environment-requirements)
     - [Development Tools](#development-tools)
   - [CI/CD Pipeline](#cicd-pipeline)
@@ -105,7 +105,7 @@ make
    docker run --rm -ti --net=host --ipc=host -e DISPLAY=$DISPLAY -v /tmp:/tmp my-application:latest --cid=253 --name=img --width=640 --height=480 --verbose
    ```
 
-## 🔧 Modifying Code
+## Modifying Code
 
 ### Environment Requirements
 - **Linux** environment (options for non-Linux users):
@@ -230,8 +230,3 @@ Performance improvements:
 
 ![Linear-Regression](readme-material/Linear-Regression-Gif.gif)
 *Linear regression algorithm visualization*
-
-
----
-
-*Developed with by Joel Mattsson, Mohamad Khalil, Joshua Falck and Joey Karlsson*
